@@ -9,6 +9,7 @@ const closeButton = document.querySelector(".dialog-close");
 const menuButtons = [...document.querySelectorAll(".menu-button")];
 const worldSeed = 8421;
 let lastMenuButton = menuButtons[0];
+let dialogUsesFallback = false;
 
 const animals = [
   {
@@ -274,8 +275,28 @@ function openDialog(title, body, className = "") {
   dialog.classList.toggle("animal-selection", className === "animal-selection");
   dialogTitle.textContent = title;
   dialogBody.innerHTML = body;
-  dialog.showModal();
+  if (typeof dialog.showModal === "function") {
+    dialog.showModal();
+  } else {
+    dialogUsesFallback = true;
+    dialog.setAttribute("open", "");
+    dialog.setAttribute("role", "dialog");
+    dialog.setAttribute("aria-modal", "true");
+  }
   closeButton.focus();
+}
+
+function closeDialog() {
+  if (!dialog.hasAttribute("open")) return;
+  if (!dialogUsesFallback && typeof dialog.close === "function") {
+    dialog.close();
+    return;
+  }
+
+  dialog.removeAttribute("open");
+  dialog.removeAttribute("aria-modal");
+  dialogUsesFallback = false;
+  lastMenuButton.focus();
 }
 
 function drawAnimalSprite(canvas, animal) {
@@ -330,7 +351,7 @@ function openAnimalSelection() {
     });
   });
 
-  dialog.querySelector(".animal-back").addEventListener("click", () => dialog.close());
+  dialog.querySelector(".animal-back").addEventListener("click", closeDialog);
   animalCards[0].focus();
 }
 
@@ -383,14 +404,21 @@ function bindSettings() {
   });
 }
 
-closeButton.addEventListener("click", () => dialog.close());
+closeButton.addEventListener("click", closeDialog);
 dialog.addEventListener("click", (event) => {
-  if (event.target === dialog) dialog.close();
+  if (event.target === dialog) closeDialog();
 });
 dialog.addEventListener("close", () => {
   lastMenuButton.focus();
 });
-document.querySelector(".dialog-backdrop").addEventListener("click", () => dialog.close());
+dialog.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeDialog();
+});
+dialog.addEventListener("keydown", (event) => {
+  if (dialogUsesFallback && event.key === "Escape") closeDialog();
+});
+document.querySelector(".dialog-backdrop").addEventListener("click", closeDialog);
 document.addEventListener("fullscreenchange", () => {
   const fullscreenToggle = dialog.querySelector(".fullscreen-toggle");
   if (fullscreenToggle) {

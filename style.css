@@ -332,6 +332,14 @@ kbd {
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
+.menu-dialog:not([open]) {
+  display: none;
+}
+
+.menu-dialog[open] {
+  display: block;
+}
+
 .menu-dialog[open] {
   transform: translate(-50%, -50%);
   opacity: 1;
