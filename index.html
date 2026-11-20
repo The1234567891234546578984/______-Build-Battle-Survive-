@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#172b32" />
+    <title>Build. Battle. Survive.</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="menu-screen">
+      <canvas class="plains" aria-hidden="true"></canvas>
+      <div class="scene-shade" aria-hidden="true"></div>
+      <div class="pixel-frame" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="wordmark" href="#" aria-label="Build Battle Survive home">
+          <span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>FIELD NOTES <b>·</b> 01</span>
+        </a>
+        <span class="world-status"><span class="status-dot"></span> WORLD SEED: 08421</span>
+      </header>
+
+      <section class="menu-content" aria-labelledby="game-title">
+        <p class="eyebrow"><span></span> YOUR NEXT GREAT ADVENTURE</p>
+        <h1 id="game-title">BUILD<span>.</span><br />BATTLE<span>.</span><br />SURVIVE<span>.</span></h1>
+        <p class="intro">A little patch of wild is waiting.<br />What will you make of it?</p>
+
+        <nav class="menu-actions" aria-label="Main menu">
+          <button class="menu-button primary" data-dialog="start">
+            <span class="button-icon" aria-hidden="true">▶</span>
+            <span>START YOUR JOURNEY</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="menu-button" data-dialog="settings">
+            <span class="button-icon settings-icon" aria-hidden="true">✳</span>
+            <span>SETTINGS</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="menu-button" data-dialog="about">
+            <span class="button-icon about-icon" aria-hidden="true">?</span>
+            <span>ABOUT THE GAME</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+        </nav>
+        <p class="menu-hint"><span>↑</span><span>↓</span> TO EXPLORE <b>·</b> <kbd>ENTER</kbd> TO SELECT</p>
+      </section>
+
+      <div class="scene-caption" aria-hidden="true">
+        <span class="caption-rule"></span>
+        <span>THE SUNRISE PLAINS</span>
+        <span class="caption-coordinates">LAT 42° · LONG 08°</span>
+      </div>
+
+      <footer class="footer">
+        <span>MADE FOR THE DAYDREAMERS <span class="footer-heart">♥</span></span>
+        <span class="version">DEMO BUILD <b>0.1.0</b></span>
+      </footer>
+
+      <dialog class="menu-dialog" aria-labelledby="dialog-title">
+        <button class="dialog-close" aria-label="Close dialog">×</button>
+        <p class="eyebrow dialog-eyebrow"><span></span> FIELD NOTES · 01</p>
+        <h2 id="dialog-title"></h2>
+        <div class="dialog-body"></div>
+      </dialog>
+      <div class="dialog-backdrop"></div>
+      <div class="screen-reader-status" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
