@@ -16,125 +16,193 @@ const animals = [
     id: "fox",
     name: "Fox",
     sprite: [
-      "...M.........M...",
-      "...MM.......MM...",
-      "...MMM.....MMM...",
-      "....MMMMMMMMM....",
-      "...MMMMMMMMMMM...",
-      "..MMMMMMMMMMMMM..",
-      ".MMMMCCMMMMCCMMMM.",
-      ".MMMMCCMMMMCCMMMM.",
-      ".MMMMMMMMMMMMMMM..",
-      "..MMMMMMMMMMMMM...",
-      "...MMDMMMMMDMM....",
-      ".....DMMMMMD......",
-      "......DD.DD.......",
+      "....O...O.....................OOO.",
+      "...OMO.OMO..................OMMMO.",
+      "..OMMMMMMMO...............OMMMMMMO..",
+      ".OMMMMMMMMMO.............OMMMMMMMMO.",
+      "ECOOMMEMMMMMMO..........OMMMMMMMGGO",
+      ".OOMMMMMMMMMMMOOOOOOOOMMMMMMMGGGO.",
+      "....OMMMMMMMMMMMMMMMMMMMMMMMOO......",
+      "......OMMMMMMMMMMMMMMMMMMOO...........",
+      ".......OMGGGGGGGGGGGGGGGGGO............",
+      "........OGGGGGGGGGGGGGGGGO.............",
+      ".........OOOGGGGGGGGGGGO................",
+      "..........OOGG....OGGO..................",
+      "..........OOBB....OBBO..................",
+      "..........OO......OO....................",
     ],
-    colors: { M: "#e58b43", D: "#603b32", C: "#f7e7bd" },
+    colors: {
+      O: "#40271f",
+      M: "#e58b43",
+      H: "#f5b04f",
+      S: "#bd6338",
+      C: "#f7e7bd",
+      E: "#272a2a",
+      B: "#34231f",
+      G: "#aaa7a0",
+    },
   },
   {
     id: "rabbit",
     name: "Rabbit",
     sprite: [
-      "......M..M......",
-      "......M..M......",
-      "......M..M......",
-      ".....MM..MM.....",
-      ".....MM..MM.....",
-      "....MMMMMMMM....",
-      "...MMMMMMMMMM...",
-      "...MMDDMMDDMM...",
-      "...MMDDMMDDMM...",
-      "...MMMMMMMMMM...",
-      "....MMMMMMMM....",
-      "....MM.MMMM.....",
-      "....M...MM.......",
-      "........MM.......",
-      ".......DDDD......",
+      ".....................OMMO........",
+      ".....................OMLO........",
+      ".....................OMLO........",
+      ".....................OMMO........",
+      "...................OOMMMMO.......",
+      "...........OO...OOOMMMMMMMO.......",
+      ".......OOOMMMMMMMMMMMMMMMCCO......",
+      "....OOMMMMMMMMMMMMMMMMMMMEMCCOO...",
+      "..OMMMMMMMMMMMMMMMMMMMMMMCCCCO......",
+      "..OMMMMMMMMMMMMMMMMMMMMMMMOO.........",
+      "...OMMMMMMMMMMMMMMMMMMMMOO............",
+      "....OMMMMMMMMMMMMMMMMMOO..............",
+      ".....OMMMMMMMMMMMMMMOO.................",
+      "......OMMMMMMMMMMMOO...................",
+      "......OMMMOO...OMMOO....................",
+      "......OMMMB...OMMMB.....................",
+      "......OO.......OO.......................",
     ],
-    colors: { M: "#e6dcc3", D: "#59494a" },
+    colors: {
+      O: "#46393b",
+      M: "#e6dcc3",
+      H: "#f4e9d3",
+      C: "#fff2dc",
+      L: "#d18a91",
+      E: "#302b2d",
+      B: "#59494a",
+    },
   },
   {
     id: "deer",
     name: "Deer",
     sprite: [
-      "...D...D..D...D...",
-      "...D...D..D...D...",
-      "....D..D..D..D....",
-      ".....D.D..D.D.....",
-      "......MMMMMM......",
-      ".....MMMMMMMM.....",
-      "....MMMMMMMMMM....",
-      "...MMCCMMMMCCMM...",
-      "...MMCCMMMMCCMM...",
-      "...MMMMMMMMMMMM...",
-      "....MMMMMMMMMM....",
-      ".....MM.MMMM.......",
-      ".....D....D........",
-      ".....D....D........",
+      ".......................T....T...",
+      ".......................TT...TT...",
+      "........................T.T.T....",
+      ".........................OMMMO...",
+      ".........................OMMEMCCO.",
+      ".........................OMMMMMMO..",
+      ".......OO...............OMMMMMO...",
+      ".....OMMMO.............OMMMMMO....",
+      "...OMMMMMMMO..........OMMMMMO.....",
+      "..OMMMMMMMMMMMMMMMMMMMMMMMO.........",
+      ".OMMMMMMMMMMMMMMMMMMMMMMMMMO........",
+      "..OMMMMMHMMMMMMMMMMMMMMMMCCO.........",
+      "...OMMMMMMMMMMMMMMMMMMMMMO............",
+      "....OMMMMMMMMMMMMMMMMMOO..............",
+      ".....OMMO......OMMO...................",
+      ".....OMMO......OMMO...................",
+      ".....OMMO......OMMO...................",
+      ".....OOO........OOO....................",
     ],
-    colors: { M: "#b77a48", D: "#5b4534", C: "#f5dfb0" },
+    colors: {
+      O: "#3e2d24",
+      M: "#b77a48",
+      H: "#d99a55",
+      C: "#f5dfb0",
+      T: "#d2a96e",
+      E: "#282825",
+    },
   },
   {
     id: "bear",
     name: "Bear",
     sprite: [
-      "....MM......MM....",
-      "...MMMM....MMMM...",
-      "..MMMMMMMMMMMMMM..",
-      "..MMMMMMMMMMMMMM..",
-      ".MMMMCCMMMMCCMMMM.",
-      ".MMMMCCMMMMCCMMMM.",
-      ".MMMMMMMMMMMMMMMM.",
-      "..MMMMMMMMMMMMMM..",
-      "...MMMMMMMMMMMM...",
-      "...MMMMMMMMMMMM...",
-      "....MMMMMMMMMM....",
-      "....MM.MMMM.MM....",
-      "....DD....DD.......",
+      "................................",
+      "....................OO..........",
+      "...................OMMO..........",
+      ".........OO.......OMMMMMO.........",
+      "........OMMO...OOMMMMMMMOO........",
+      "...OOMMMMMMMMMMMMMMMMMMMMMO.......",
+      ".OMMMMMMMMMMMMMMMMMMMMMMMMMMOO....",
+      "OMMMMMMMMMMMMMMMMMMMMMMMMMMECCCOO..",
+      ".OMMMMMMMMMMMMMMMMMMMMMMMMCCCCCO...",
+      "..OMMMMMHMMMMMMMMMMMMMMMMMMMMMOO.....",
+      "...OMMMMMMMMMMMMMMMMMMMMMMMMO........",
+      "....OMMMMMMMMMMMMMMMMMMMMMOO.........",
+      ".....OMMMMMMMMMMMMMMMMMMOO............",
+      "......OMMMMMOO....OMMMMMOO.............",
+      "......OMMMB........OMMMB...............",
+      "......OO............OO.................",
     ],
-    colors: { M: "#986345", D: "#42352f", C: "#f0d7aa" },
+    colors: {
+      O: "#34231f",
+      M: "#986345",
+      H: "#bd8051",
+      C: "#f0d7aa",
+      E: "#252321",
+      B: "#34231f",
+    },
   },
   {
     id: "owl",
     name: "Owl",
     sprite: [
-      ".......MM.........",
-      "......MMMM........",
-      ".....MMMMMM.......",
-      "....MMMMMMMM......",
-      "...MMMCCMMCCMMM...",
-      "..MMMMCCMMCCMMMM..",
-      "..MMMMMMMMMMMMMM..",
-      "...MMMMMMMMMMMM...",
-      "....MMMMMMMMMM....",
-      ".....MMMMMMMM.....",
-      "......MM..MM......",
-      ".....DD....DD.....",
-      "....DD......DD....",
+      "...O.......O...",
+      "..OMO.....OMO..",
+      ".OMMMO...OMMMO.",
+      "OMMMMMMMMMMMMMO",
+      "OMMMMMMMMMMMMMO",
+      "OMMMCCMMMCCMMMO",
+      "OMMCCYEMEYCCMMO",
+      "OMMMCCMMMCCMMMO",
+      "OMMMMMMNMMMMMMO",
+      "OMMMMMMMMMMMMMO",
+      "OMHMMMMMMMMMHMO",
+      "OMHMMMMMMMMMHMO",
+      "OMMMMHHMHHMMMMO",
+      "OMMMMHHMHHMMMMO",
+      "OMMMMMMMMMMMMMO",
+      ".OMMMMMMMMMMMO.",
+      "..OMMMMMMMMMO..",
+      "...OMMMMMMMO...",
+      "....OMMMMMO....",
+      "....OMM.MMO....",
+      "....TTT.TTT....",
     ],
-    colors: { M: "#8a6546", D: "#39383c", C: "#f4d681" },
+    colors: {
+      O: "#302b31",
+      M: "#8a6546",
+      H: "#b98a5b",
+      C: "#e7d5b0",
+      E: "#282825",
+      T: "#b77a48",
+      N: "#d5a35b",
+      Y: "#e8bd57",
+    },
   },
   {
     id: "boar",
     name: "Boar",
     sprite: [
-      ".....MMMMMMMM.....",
-      "...MMMMMMMMMMMM...",
-      "..MMMMMMMMMMMMMM..",
-      ".MMMMCCMMMMCCMMMM.",
-      ".MMMMCCMMMMCCMMMM.",
-      ".MMMMMMMMMMMMMMMM.",
-      "..MMMMMMMMMMMMMM..",
-      "...MMMMMMMMMMMM...",
-      "....MMMMMMMMMM....",
-      "....MMDDDDDDMM....",
-      "....MMLLLLMM.......",
-      ".....MMMMMM........",
-      ".....MM..MM........",
-      ".....DD..DD........",
+      ".................................",
+      ".....OOOOOOOO....................",
+      "....OMMMMMMMOO......OO............",
+      "...OMMMMMMMMMMO...OMMMO...........",
+      "..OMMMMMMMMMMMMMMMMMMMMO..........",
+      ".OMMMMMHMMMMMMMMMMMMMMMMMO.........",
+      "OMMMMMMMMMMMMMMMMMMMMMMMMMMO........",
+      "OMMMMMMMMMMMMMMMMMMMMMMMMMMMO.......",
+      ".OMMMMMMMMMMMMMMMMMMMMMMMMMMO........",
+      "..OMMMMMMMMMMMMMMMMMMMMMMMEMCCOO.....",
+      "...OMMMMMMMMMMMMMMMMMMMMMMCCCCNO....",
+      "....OMMMMMMMMMMMMMMMMMMMMMOOCCCNO....",
+      ".....OMMMMMMMMMMMMMMMMMMMOOO.........",
+      "......OMMMOO.....OMMMOO...............",
+      "......OMMMB......OMMMB................",
+      "......OO..........OO..................",
     ],
-    colors: { M: "#896253", D: "#433638", C: "#efe0c4", L: "#d8a69a" },
+    colors: {
+      O: "#35282b",
+      M: "#896253",
+      H: "#a57660",
+      C: "#efe0c4",
+      N: "#d8a69a",
+      E: "#282426",
+      B: "#35282b",
+    },
   },
 ];
 
@@ -301,15 +369,53 @@ function closeDialog() {
 
 function drawAnimalSprite(canvas, animal) {
   const spriteContext = canvas.getContext("2d");
-  canvas.width = Math.max(...animal.sprite.map((row) => row.length));
-  canvas.height = animal.sprite.length;
+  const width = Math.max(...animal.sprite.map((row) => row.length));
+  const height = animal.sprite.length;
+  const sprite = animal.sprite.map((row) => [...row]);
+  const bodyStart = Math.floor(height * 0.35);
+  const bodyEnd = Math.ceil(height * 0.8);
+
+  if (animal.id !== "owl") {
+    for (let y = bodyStart; y < bodyEnd; y++) {
+      const row = sprite[y];
+      const first = row.findIndex((pixel) => pixel !== ".");
+      if (first < 0) continue;
+
+      let last = row.length - 1;
+      while (last >= 0 && row[last] === ".") last--;
+
+      if (first > 0) row[first - 1] = "M";
+      if (last < width - 1) row[last + 1] = "M";
+    }
+  }
+
+  canvas.width = width + 4;
+  canvas.height = height + 2;
   spriteContext.imageSmoothingEnabled = false;
 
-  animal.sprite.forEach((row, y) => {
-    [...row].forEach((pixel, x) => {
+  const pixelAt = (x, y) => sprite[y]?.[x] ?? ".";
+  if (animal.id !== "owl") {
+    spriteContext.fillStyle = animal.colors.O;
+    sprite.forEach((row, y) => {
+      row.forEach((pixel, x) => {
+        if (pixel === "." || pixel === "O") return;
+        for (let offsetY = -1; offsetY <= 1; offsetY++) {
+          for (let offsetX = -1; offsetX <= 1; offsetX++) {
+            if (offsetX === 0 && offsetY === 0) continue;
+            if (pixelAt(x + offsetX, y + offsetY) === ".") {
+              spriteContext.fillRect(x + offsetX + 2, y + offsetY + 1, 1, 1);
+            }
+          }
+        }
+      });
+    });
+  }
+
+  sprite.forEach((row, y) => {
+    row.forEach((pixel, x) => {
       if (pixel === ".") return;
       spriteContext.fillStyle = animal.colors[pixel];
-      spriteContext.fillRect(x, y, 1, 1);
+      spriteContext.fillRect(x + 2, y + 1, 1, 1);
     });
   });
 }
@@ -332,7 +438,10 @@ function openAnimalSelection() {
       <div class="animal-grid">${cards}</div>
       <div class="animal-page-footer">
         <p class="animal-status" role="status" aria-live="polite">Choose an animal for your journey.</p>
-        <button class="animal-back" type="button">BACK TO MENU</button>
+        <div class="animal-actions">
+          <button class="animal-next" type="button" hidden>NEXT</button>
+          <button class="animal-back" type="button">BACK TO MENU</button>
+        </div>
       </div>`,
     "animal-selection",
   );
@@ -343,12 +452,21 @@ function openAnimalSelection() {
 
   const animalCards = [...dialog.querySelectorAll(".animal-card")];
   const animalStatus = dialog.querySelector(".animal-status");
+  const nextButton = dialog.querySelector(".animal-next");
+  let selectedAnimal = null;
+
   animalCards.forEach((card) => {
     card.addEventListener("click", () => {
       animalCards.forEach((item) => item.setAttribute("aria-pressed", String(item === card)));
-      const animal = animals.find((item) => item.id === card.dataset.animal);
-      animalStatus.textContent = `${animal.name} is ready to join your journey!`;
+      selectedAnimal = animals.find((item) => item.id === card.dataset.animal);
+      nextButton.hidden = false;
+      animalStatus.textContent = `${selectedAnimal.name} is ready to join your journey!`;
     });
+  });
+
+  nextButton.addEventListener("click", () => {
+    if (!selectedAnimal) return;
+    animalStatus.textContent = `Your journey is ready to begin with ${selectedAnimal.name}!`;
   });
 
   dialog.querySelector(".animal-back").addEventListener("click", closeDialog);

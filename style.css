@@ -383,10 +383,10 @@ kbd {
 }
 
 .menu-dialog.animal-selection {
+  position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  width: auto;
+  height: auto;
   max-width: none;
   max-height: none;
   margin: 0;
@@ -486,6 +486,7 @@ kbd {
   display: block;
   width: 92px;
   height: 82px;
+  object-fit: contain;
   image-rendering: pixelated;
 }
 
@@ -495,6 +496,12 @@ kbd {
   justify-content: space-between;
   gap: 16px;
   margin-top: 16px;
+}
+
+.animal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .animal-status {
@@ -518,6 +525,27 @@ kbd {
 .animal-back:hover {
   border-color: var(--orange);
   color: var(--orange);
+}
+
+.animal-next {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border: 1px solid var(--orange);
+  color: #202e30;
+  background: var(--orange);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.animal-next:hover {
+  border-color: #ffc078;
+  background: #ffc078;
+}
+
+.animal-next[hidden] {
+  display: none;
 }
 
 .dialog-body {
