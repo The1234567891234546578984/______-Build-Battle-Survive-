@@ -10,11 +10,134 @@ const menuButtons = [...document.querySelectorAll(".menu-button")];
 const worldSeed = 8421;
 let lastMenuButton = menuButtons[0];
 
-const dialogs = {
-  start: {
-    title: "A world of your own.",
-    body: "<p>Your journey is just around the corner. For now, take a breath and enjoy the view — this little world is still growing.</p>",
+const animals = [
+  {
+    id: "fox",
+    name: "Fox",
+    sprite: [
+      "...M.........M...",
+      "...MM.......MM...",
+      "...MMM.....MMM...",
+      "....MMMMMMMMM....",
+      "...MMMMMMMMMMM...",
+      "..MMMMMMMMMMMMM..",
+      ".MMMMCCMMMMCCMMMM.",
+      ".MMMMCCMMMMCCMMMM.",
+      ".MMMMMMMMMMMMMMM..",
+      "..MMMMMMMMMMMMM...",
+      "...MMDMMMMMDMM....",
+      ".....DMMMMMD......",
+      "......DD.DD.......",
+    ],
+    colors: { M: "#e58b43", D: "#603b32", C: "#f7e7bd" },
   },
+  {
+    id: "rabbit",
+    name: "Rabbit",
+    sprite: [
+      "......M..M......",
+      "......M..M......",
+      "......M..M......",
+      ".....MM..MM.....",
+      ".....MM..MM.....",
+      "....MMMMMMMM....",
+      "...MMMMMMMMMM...",
+      "...MMDDMMDDMM...",
+      "...MMDDMMDDMM...",
+      "...MMMMMMMMMM...",
+      "....MMMMMMMM....",
+      "....MM.MMMM.....",
+      "....M...MM.......",
+      "........MM.......",
+      ".......DDDD......",
+    ],
+    colors: { M: "#e6dcc3", D: "#59494a" },
+  },
+  {
+    id: "deer",
+    name: "Deer",
+    sprite: [
+      "...D...D..D...D...",
+      "...D...D..D...D...",
+      "....D..D..D..D....",
+      ".....D.D..D.D.....",
+      "......MMMMMM......",
+      ".....MMMMMMMM.....",
+      "....MMMMMMMMMM....",
+      "...MMCCMMMMCCMM...",
+      "...MMCCMMMMCCMM...",
+      "...MMMMMMMMMMMM...",
+      "....MMMMMMMMMM....",
+      ".....MM.MMMM.......",
+      ".....D....D........",
+      ".....D....D........",
+    ],
+    colors: { M: "#b77a48", D: "#5b4534", C: "#f5dfb0" },
+  },
+  {
+    id: "bear",
+    name: "Bear",
+    sprite: [
+      "....MM......MM....",
+      "...MMMM....MMMM...",
+      "..MMMMMMMMMMMMMM..",
+      "..MMMMMMMMMMMMMM..",
+      ".MMMMCCMMMMCCMMMM.",
+      ".MMMMCCMMMMCCMMMM.",
+      ".MMMMMMMMMMMMMMMM.",
+      "..MMMMMMMMMMMMMM..",
+      "...MMMMMMMMMMMM...",
+      "...MMMMMMMMMMMM...",
+      "....MMMMMMMMMM....",
+      "....MM.MMMM.MM....",
+      "....DD....DD.......",
+    ],
+    colors: { M: "#986345", D: "#42352f", C: "#f0d7aa" },
+  },
+  {
+    id: "owl",
+    name: "Owl",
+    sprite: [
+      ".......MM.........",
+      "......MMMM........",
+      ".....MMMMMM.......",
+      "....MMMMMMMM......",
+      "...MMMCCMMCCMMM...",
+      "..MMMMCCMMCCMMMM..",
+      "..MMMMMMMMMMMMMM..",
+      "...MMMMMMMMMMMM...",
+      "....MMMMMMMMMM....",
+      ".....MMMMMMMM.....",
+      "......MM..MM......",
+      ".....DD....DD.....",
+      "....DD......DD....",
+    ],
+    colors: { M: "#8a6546", D: "#39383c", C: "#f4d681" },
+  },
+  {
+    id: "boar",
+    name: "Boar",
+    sprite: [
+      ".....MMMMMMMM.....",
+      "...MMMMMMMMMMMM...",
+      "..MMMMMMMMMMMMMM..",
+      ".MMMMCCMMMMCCMMMM.",
+      ".MMMMCCMMMMCCMMMM.",
+      ".MMMMMMMMMMMMMMMM.",
+      "..MMMMMMMMMMMMMM..",
+      "...MMMMMMMMMMMM...",
+      "....MMMMMMMMMM....",
+      "....MMDDDDDDMM....",
+      "....MMLLLLMM.......",
+      ".....MMMMMM........",
+      ".....MM..MM........",
+      ".....DD..DD........",
+    ],
+    colors: { M: "#896253", D: "#433638", C: "#efe0c4", L: "#d8a69a" },
+  },
+];
+
+const dialogs = {
   about: {
     title: "Build. Battle. Survive.",
     body: "<p>A cozy little sandbox about making a home in the wild, finding your feet, and seeing what the horizon holds.</p><p>Made for the daydreamers.</p>",
@@ -147,17 +270,79 @@ function drawForeground(width, height, random) {
   drawTree(width * 0.94, height * 0.83, height * 0.09, "#496b4d");
 }
 
-function openDialog(title, body) {
+function openDialog(title, body, className = "") {
+  dialog.classList.toggle("animal-selection", className === "animal-selection");
   dialogTitle.textContent = title;
   dialogBody.innerHTML = body;
   dialog.showModal();
   closeButton.focus();
 }
 
+function drawAnimalSprite(canvas, animal) {
+  const spriteContext = canvas.getContext("2d");
+  canvas.width = Math.max(...animal.sprite.map((row) => row.length));
+  canvas.height = animal.sprite.length;
+  spriteContext.imageSmoothingEnabled = false;
+
+  animal.sprite.forEach((row, y) => {
+    [...row].forEach((pixel, x) => {
+      if (pixel === ".") return;
+      spriteContext.fillStyle = animal.colors[pixel];
+      spriteContext.fillRect(x, y, 1, 1);
+    });
+  });
+}
+
+function openAnimalSelection() {
+  const cards = animals
+    .map(
+      (animal) => `
+        <button class="animal-card" type="button" data-animal="${animal.id}" aria-pressed="false">
+          <span class="animal-name">${animal.name}</span>
+          <canvas class="animal-sprite" width="18" height="15" aria-hidden="true"></canvas>
+        </button>
+      `,
+    )
+    .join("");
+
+  openDialog(
+    "Choose your companion",
+    `<p class="animal-intro">Every adventure is better with a friend. Who will join you?</p>
+      <div class="animal-grid">${cards}</div>
+      <div class="animal-page-footer">
+        <p class="animal-status" role="status" aria-live="polite">Choose an animal for your journey.</p>
+        <button class="animal-back" type="button">BACK TO MENU</button>
+      </div>`,
+    "animal-selection",
+  );
+
+  animals.forEach((animal) => {
+    drawAnimalSprite(dialog.querySelector(`[data-animal="${animal.id}"] canvas`), animal);
+  });
+
+  const animalCards = [...dialog.querySelectorAll(".animal-card")];
+  const animalStatus = dialog.querySelector(".animal-status");
+  animalCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      animalCards.forEach((item) => item.setAttribute("aria-pressed", String(item === card)));
+      const animal = animals.find((item) => item.id === card.dataset.animal);
+      animalStatus.textContent = `${animal.name} is ready to join your journey!`;
+    });
+  });
+
+  dialog.querySelector(".animal-back").addEventListener("click", () => dialog.close());
+  animalCards[0].focus();
+}
+
 menuButtons.forEach((button) => {
   button.addEventListener("click", () => {
     lastMenuButton = button;
     const type = button.dataset.dialog;
+    if (type === "start") {
+      openAnimalSelection();
+      return;
+    }
+
     if (type === "settings") {
       openDialog(
         "Make yourself at home.",
@@ -167,7 +352,7 @@ menuButtons.forEach((button) => {
       return;
     }
 
-    openDialog(dialogs[type].title, dialogs[type].body);
+    openDialog(dialogs.about.title, dialogs.about.body);
   });
 });
 

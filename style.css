@@ -319,7 +319,9 @@ kbd {
   top: 50%;
   left: 50%;
   width: min(440px, calc(100vw - 40px));
+  max-height: calc(100vh - 48px);
   max-width: none;
+  overflow: auto;
   padding: 38px;
   transform: translate(-50%, -46%);
   border: 1px solid rgb(247 240 215 / 35%);
@@ -370,6 +372,95 @@ kbd {
   margin: 0;
   font-size: 27px;
   letter-spacing: -0.04em;
+}
+
+.menu-dialog.animal-selection {
+  width: min(800px, calc(100vw - 32px));
+  padding: clamp(24px, 4vw, 40px);
+}
+
+.animal-intro {
+  margin: 9px 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.animal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.animal-card {
+  display: flex;
+  min-height: 138px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid rgb(247 240 215 / 24%);
+  color: var(--cream);
+  background: rgb(17 31 37 / 54%);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.animal-card:hover,
+.animal-card[aria-pressed="true"] {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  background: rgb(247 166 90 / 12%);
+}
+
+.animal-card:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.animal-name {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.animal-sprite {
+  display: block;
+  width: 92px;
+  height: 82px;
+  image-rendering: pixelated;
+}
+
+.animal-page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.animal-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.animal-back {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border: 1px solid rgb(247 240 215 / 35%);
+  color: var(--cream);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.animal-back:hover {
+  border-color: var(--orange);
+  color: var(--orange);
 }
 
 .dialog-body {
@@ -468,6 +559,15 @@ kbd {
     right: 8vw;
     bottom: 110px;
   }
+
+  .animal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .animal-card {
+    min-height: 126px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -488,6 +588,15 @@ kbd {
   .footer {
     font-size: 7px;
     letter-spacing: 0.04em;
+  }
+
+  .menu-dialog.animal-selection {
+    padding: 30px 18px 20px;
+  }
+
+  .animal-page-footer {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
